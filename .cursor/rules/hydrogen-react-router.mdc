@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
 
@@ -49,4 +49,4 @@ import { useLoaderData, Link, Form, useActionData, useNavigation, useSubmit } fr
 
 When working in this codebase, always follow the React Router patterns that are already established in the existing code.
 
-For more information, consult the official Remix to React Router upgrade guide: https://reactrouter.com/upgrading/remix
+For more information, consult the [official Remix to React Router upgrade guide](https://reactrouter.com/upgrading/remix).
