@@ -25,26 +25,27 @@ export function Header({
 }: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20 dark:bg-gray-900/80 dark:border-gray-800/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center h-16">
           {/* Left side - Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 w-1/3">
-            <HeaderMenu
-              menu={menu}
-              viewport="desktop"
-              primaryDomainUrl={header.shop.primaryDomain.url}
-              publicStoreDomain={publicStoreDomain}
-            />
+        <HeaderMenu
+          menu={menu}
+          viewport="desktop"
+          primaryDomainUrl={header.shop.primaryDomain.url}
+          publicStoreDomain={publicStoreDomain}
+          isLoggedIn={isLoggedIn}
+        />
           </div>
 
           {/* Mobile menu toggle - only visible on mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden w-1/3 flex justify-start">
             <HeaderMenuMobileToggle />
           </div>
 
           {/* Center Logo */}
-          <div className="flex-1 flex justify-center">
+          <div className="flex-1 flex justify-center md:w-1/3">
             <NavLink 
               prefetch="intent" 
               to="/" 
@@ -61,7 +62,7 @@ export function Header({
             <NavLink 
               prefetch="intent" 
               to="/account" 
-              className="hidden lg:block text-sm font-medium text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400 transition-colors duration-200"
+              className="hidden md:block text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
             >
               <Suspense fallback="Sign in">
                 <Await resolve={isLoggedIn} errorElement="Sign in">
@@ -74,15 +75,7 @@ export function Header({
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div className="md:hidden">
-        <HeaderMenu
-          menu={menu}
-          viewport="mobile"
-          primaryDomainUrl={header.shop.primaryDomain.url}
-          publicStoreDomain={publicStoreDomain}
-        />
-      </div>
+      {/* Mobile menu - скрыто по умолчанию, показывается через Aside */}
     </header>
   );
 }
@@ -92,26 +85,35 @@ export function HeaderMenu({
   primaryDomainUrl,
   viewport,
   publicStoreDomain,
+  isLoggedIn,
 }: {
   menu: HeaderProps['header']['menu'];
   primaryDomainUrl: HeaderProps['header']['shop']['primaryDomain']['url'];
   viewport: Viewport;
   publicStoreDomain: HeaderProps['publicStoreDomain'];
+  isLoggedIn: HeaderProps['isLoggedIn'];
 }) {
   const {close} = useAside();
 
   if (viewport === 'mobile') {
     return (
-      <nav className="px-4 py-2 bg-gray-50 border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <nav className="px-4 py-2 bg-gray-50 border-t border-gray-200">
+        {/* Sign In / Account link */}
         <NavLink
+          className="block py-2 text-base font-medium text-gray-900 hover:text-purple-600 border-b border-gray-200 mb-2"
           end
           onClick={close}
           prefetch="intent"
-          className="block py-2 text-base font-medium text-gray-900 hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
-          to="/"
+          to="/account"
         >
-          Home
+          <Suspense fallback="Sign in">
+            <Await resolve={isLoggedIn} errorElement="Sign in">
+              {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')}
+            </Await>
+          </Suspense>
         </NavLink>
+        
+        {/* Menu items */}
         {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
           if (!item.url) return null;
 
@@ -123,7 +125,7 @@ export function HeaderMenu({
               : item.url;
           return (
             <NavLink
-              className="block py-2 text-base font-medium text-gray-900 hover:text-purple-600 dark:text-white dark:hover:text-purple-400"
+              className="block py-2 text-base font-medium text-gray-900 hover:text-purple-600"
               end
               key={item.id}
               onClick={close}
@@ -151,7 +153,7 @@ export function HeaderMenu({
             : item.url;
         return (
           <NavLink
-            className="text-sm font-medium text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400 transition-colors duration-200"
+            className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
             end
             key={item.id}
             prefetch="intent"
@@ -180,7 +182,7 @@ function HeaderMenuMobileToggle() {
   const {open} = useAside();
   return (
     <button
-      className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+      className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 transition-colors duration-200"
       onClick={() => open('mobile')}
       aria-label="Open menu"
     >
@@ -195,7 +197,7 @@ function SearchToggle() {
   const {open} = useAside();
   return (
     <button 
-      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
+      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 transition-colors duration-200" 
       onClick={() => open('search')}
       aria-label="Search"
     >
@@ -212,7 +214,7 @@ function CartBadge({count}: {count: number | null}) {
 
   return (
     <button
-      className="relative inline-flex items-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+      className="relative inline-flex items-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 transition-colors duration-200"
       onClick={(e) => {
         e.preventDefault();
         open('cart');
@@ -226,14 +228,14 @@ function CartBadge({count}: {count: number | null}) {
       aria-label={`Cart with ${count || 0} items`}
     >
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
       </svg>
       {count !== null && count > 0 && (
         <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-purple-600 rounded-full min-w-[1.25rem] h-5">
           {count > 99 ? '99+' : count}
         </span>
       )}
-      <span className="hidden sm:inline-block ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+      <span className="hidden sm:inline-block ml-2 text-sm font-medium text-gray-700">
         Cart {count === null ? '' : `(${count})`}
       </span>
     </button>

@@ -28,7 +28,7 @@ export function ProductItem({
   
   return (
     <Link
-      className="group relative flex w-full max-w-[320px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 no-underline"
+      className="group relative flex w-full max-w-[320px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md no-underline"
       style={{textDecoration: 'none'}}
       key={product.id}
       prefetch="intent"
@@ -36,7 +36,7 @@ export function ProductItem({
     >
 
       {/* Image container with background glow effect */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-violet-100 p-4 sm:p-6 dark:from-indigo-950/30 dark:via-purple-950/20 dark:to-violet-950/30">
+      <div className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-violet-100 p-4 sm:p-6">
         <div className="absolute -bottom-10 left-1/2 h-40 w-40 -translate-x-1/2 transform rounded-full bg-purple-500/20 blur-3xl"></div>
         <div className="transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2">
           {image && (
@@ -55,17 +55,17 @@ export function ProductItem({
       {/* Product details */}
       <div className="flex flex-1 flex-col gap-2 sm:gap-3 p-4 sm:p-5">
         <div>
-          <h3 className="mb-1 text-lg sm:text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+          <h3 className="mb-1 text-lg sm:text-xl font-semibold tracking-tight text-gray-900">
             {product.title}
           </h3>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+          <p className="text-xs text-gray-600">
             {product.vendor}
           </p>
         </div>
 
         {/* Features - скрываем на мобильных, показываем на планшетах+ */}
         <div className="mb-1 hidden sm:block">
-          <p className="mb-1 text-xs font-medium text-gray-500 uppercase dark:text-gray-400">
+          <p className="mb-1 text-xs font-medium text-gray-500 uppercase">
             Key Benefits
           </p>
           <div className="grid grid-cols-2 gap-x-2 gap-y-1">
@@ -83,7 +83,7 @@ export function ProductItem({
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span className="text-gray-700 dark:text-gray-300">
+              <span className="text-gray-700">
                 High Quality
               </span>
             </div>
@@ -101,7 +101,7 @@ export function ProductItem({
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span className="text-gray-700 dark:text-gray-300">
+              <span className="text-gray-700">
                 Fast Delivery
               </span>
             </div>
@@ -112,18 +112,18 @@ export function ProductItem({
         <div className="mt-auto">
           <div className="flex items-center gap-2">
             {hasDiscount && maxPrice && (
-              <span className="text-lg font-semibold text-gray-600 line-through dark:text-gray-300">
+              <span className="text-lg font-semibold text-gray-600 line-through">
                 <Money data={maxPrice} />
               </span>
             )}
             {minPrice && (
-              <span className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
+              <span className="text-xl sm:text-2xl font-bold text-purple-600">
                 <Money data={minPrice} />
               </span>
             )}
           </div>
 
-          <p className="mt-1 inline-flex items-center text-xs sm:text-sm text-green-600 dark:text-green-400">
+          <p className="mt-1 inline-flex items-center text-xs sm:text-sm text-green-600">
             <svg
               className="mr-1 h-3 w-3 sm:h-4 sm:w-4"
               fill="none"
@@ -142,7 +142,7 @@ export function ProductItem({
 
         {/* Action buttons */}
         <div className="mt-2 sm:mt-3 flex flex-col gap-2 sm:gap-3">
-          <button className="w-full border border-gray-300 bg-white text-gray-800 transition-all duration-200 hover:border-purple-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-purple-500 dark:hover:bg-gray-700 px-3 sm:px-4 py-2 rounded-md text-sm sm:text-base">
+          <button className="w-full border border-gray-300 bg-white text-gray-800 transition-all duration-200 hover:border-purple-500 hover:bg-gray-50 px-3 sm:px-4 py-2 rounded-md text-sm sm:text-base">
             Add to cart
           </button>
           <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white transition-all hover:from-indigo-700 hover:to-purple-700 px-3 sm:px-4 py-2 rounded-md text-sm sm:text-base">

@@ -4,3 +4,10 @@
  */
 
 @import 'tailwindcss';
+
+/* Отключаем автоматическое переключение темной темы */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+  }
+}
