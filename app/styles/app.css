@@ -159,51 +159,144 @@ button.reset:hover:not(:has(> *)) {
 
 /*
 * --------------------------------------------------
-* components/Header
+* components/Header - Modern Eros Style
 * --------------------------------------------------
 */
 .header {
-  align-items: center;
-  background: #fff;
-  display: flex;
-  height: var(--header-height);
-  padding: 0 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  /* Styles now handled in Tailwind classes */
 }
 
-.header-menu-mobile-toggle {
-  @media (min-width: 48em) {
-    display: none;
-  }
+/* Logo styles */
+.logo-link {
+  text-decoration: none !important;
+  color: #9333ea !important; /* purple-600 */
 }
 
-.header-menu-mobile {
-  display: flex;
-  flex-direction: column;
-  grid-gap: 1rem;
+.logo-link:hover {
+  text-decoration: none !important;
+  color: #7c3aed !important; /* purple-700 */
 }
 
-.header-menu-desktop {
-  display: none;
-  grid-gap: 1rem;
-  @media (min-width: 45em) {
-    display: flex;
-    grid-gap: 1rem;
-    margin-left: 3rem;
-  }
-}
-
+/* Additional custom styles for header if needed */
 .header-menu-item {
+  position: relative;
   cursor: pointer;
 }
 
-.header-ctas {
-  align-items: center;
-  display: flex;
-  grid-gap: 1rem;
-  margin-left: auto;
+.header-menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #9333ea;
+  transition: width 0.3s ease;
+}
+
+.header-menu-item:hover::after,
+.header-menu-item.active::after {
+  width: 100%;
+}
+
+/* Cart badge animation */
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cart-badge-enter {
+  animation: bounce-in 0.3s ease-out;
+}
+
+/* Product card link styles */
+.group {
+  text-decoration: none !important;
+}
+
+.group:hover {
+  text-decoration: none !important;
+}
+
+.group:focus {
+  text-decoration: none !important;
+}
+
+/* Social media icons in footer */
+.social-twitter {
+  color: #60A5FA !important; /* blue-400 */
+}
+
+.social-twitter:hover {
+  color: #93C5FD !important; /* blue-300 */
+}
+
+.social-facebook {
+  color: #2563EB !important; /* blue-600 */
+}
+
+.social-facebook:hover {
+  color: #3B82F6 !important; /* blue-500 */
+}
+
+.social-pinterest {
+  color: #DC2626 !important; /* red-600 */
+}
+
+.social-pinterest:hover {
+  color: #EF4444 !important; /* red-500 */
+}
+
+.social-instagram {
+  color: #EC4899 !important; /* pink-500 */
+}
+
+.social-instagram:hover {
+  color: #F472B6 !important; /* pink-400 */
+}
+
+/* Pagination buttons */
+.pagination-button {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.pagination-button:hover {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.pagination-button:focus {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* Footer Quick Links */
+.footer-quick-links a,
+.footer-quick-links .nav-link {
+  color: #9CA3AF !important; /* gray-400 */
+  text-decoration: none !important;
+}
+
+.footer-quick-links a:hover,
+.footer-quick-links .nav-link:hover {
+  color: #C084FC !important; /* purple-400 */
+  text-decoration: none !important;
+}
+
+.footer-quick-links a:focus,
+.footer-quick-links .nav-link:focus {
+  color: #9CA3AF !important; /* gray-400 */
+  text-decoration: none !important;
 }
 
 .header-ctas > * {
@@ -409,14 +502,25 @@ button.reset:hover:not(:has(> *)) {
 
 .products-grid {
   display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
   margin-bottom: 2rem;
+  justify-items: center;
+  padding: 0 1rem;
 }
 
-.product-item img {
-  height: auto;
-  width: 100%;
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
 }
 
 /*

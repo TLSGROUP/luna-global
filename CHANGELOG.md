@@ -2,13 +2,13 @@
 
 ## 2025.5.1
 
-### Patch Changes
+### Patch Changes (2025.5.1)
 
 - Bumping the cli to 3.80.4 ([#2956](https://github.com/Shopify/hydrogen/pull/2956)) by [@balazsbajorics](https://github.com/balazsbajorics)
 
 ## 2025.5.0
 
-### Patch Changes
+### Patch Changes (2025.5.0)
 
 - Migrating to React Router 7 ([#2866](https://github.com/Shopify/hydrogen/pull/2866)) by [@balazsbajorics](https://github.com/balazsbajorics)
 
@@ -18,7 +18,7 @@
 
 ## 2025.4.0
 
-### Patch Changes
+### Patch Changes (2025.4.0)
 
 - Moved the Cursor rules into more generic LLM prompt files. If you were using the Cursor rules, you will find the prompts in the `cookbook/llms` folder and they can be put into your `.cursor/rules` folder manually. LLM prompt files will be maintained moving forward, while previous Cursor rules will not be updated anymore. ([#2936](https://github.com/Shopify/hydrogen/pull/2936)) by [@ruggishop](https://github.com/ruggishop)
 
@@ -31,12 +31,12 @@
 
 ## 2025.1.7
 
-### Patch Changes
+### Patch Changes (2025.1.7)
 
 - Fix an issue with our starter template where duplicate content can exist on URLs that use internationalized handles. For example, if you have a product handle in english of `the-havoc` and translate it to `das-chaos` in German, duplicate content exists at both: ([#2821](https://github.com/Shopify/hydrogen/pull/2821)) by [@blittle](https://github.com/blittle)
 
-  1. https://hydrogen.shop/de-de/products/das-chaos
-  2. https://hydrogen.shop/de-de/products/the-havoc
+  1. <https://hydrogen.shop/de-de/products/das-chaos>
+  2. <https://hydrogen.shop/de-de/products/the-havoc>
 
   We've changed the starter template to make the second redirect to the first.
 
@@ -51,7 +51,7 @@
 
 ## 2025.1.6
 
-### Patch Changes
+### Patch Changes (2025.1.6)
 
 - Moved the `Layout` component back into `root.tsx` to avoid issues with styled errors. ([#2829](https://github.com/Shopify/hydrogen/pull/2829)) by [@ruggishop](https://github.com/ruggishop)
 
@@ -72,19 +72,19 @@
 
 ## 2025.1.5
 
-### Patch Changes
+### Patch Changes (2025.1.5)
 
 - Fixed an issue with the creation of JavaScript projects. ([#2818](https://github.com/Shopify/hydrogen/pull/2818)) by [@seanparsons](https://github.com/seanparsons)
 
 ## 2025.1.4
 
-### Patch Changes
+### Patch Changes (2025.1.4)
 
 - Updates the `@shopify/cli`, `@shopify/cli-kit` and `@shopify/plugin-cloudflare` dependencies to 3.77.1. ([#2816](https://github.com/Shopify/hydrogen/pull/2816)) by [@seanparsons](https://github.com/seanparsons)
 
 ## 2025.1.3
 
-### Patch Changes
+### Patch Changes (2025.1.3)
 
 - Bump Remix to 2.16.1 and vite to 6.2.0 ([#2784](https://github.com/Shopify/hydrogen/pull/2784)) by [@wizardlyhel](https://github.com/wizardlyhel)
 
@@ -182,7 +182,7 @@
 
 ## 2025.1.2
 
-### Patch Changes
+### Patch Changes (2025.1.2)
 
 - Bump cli version ([#2760](https://github.com/Shopify/hydrogen/pull/2760)) by [@rbshop](https://github.com/rbshop)
 
@@ -191,7 +191,7 @@
 
 ## 2025.1.1
 
-### Patch Changes
+### Patch Changes (2025.1.1)
 
 - Upgrade eslint to version 9 and unify eslint config across all packages (with the exception of the skeleton, which still keeps its own config) ([#2716](https://github.com/Shopify/hydrogen/pull/2716)) by [@liady](https://github.com/liady)
 
@@ -199,8 +199,8 @@
 
 - Turn on Remix `v3_singleFetch` future flag ([#2708](https://github.com/Shopify/hydrogen/pull/2708)) by [@wizardlyhel](https://github.com/wizardlyhel)
 
-  Remix single fetch migration quick guide: https://remix.run/docs/en/main/start/future-flags#v3_singlefetch
-  Remix single fetch migration guide: https://remix.run/docs/en/main/guides/single-fetch
+  Remix single fetch migration quick guide: <https://remix.run/docs/en/main/start/future-flags#v3_singlefetch>
+  Remix single fetch migration guide: <https://remix.run/docs/en/main/guides/single-fetch>
 
   **Note:** If you have any routes that appends (or looks for) a search param named `_data`, make sure to rename it to something else.
 
@@ -248,7 +248,7 @@
 
      Defaulting to no revalidation for root loader data to improve performance. When using this feature, you risk your UI getting out of sync with your server. Use with caution. If you are uncomfortable with this optimization, update the `return false;` to `return defaultShouldRevalidate;` instead.
 
-     For more details see: https://remix.run/docs/en/main/route/should-revalidate
+     For more details see: <https://remix.run/docs/en/main/route/should-revalidate>
 
      ```diff
      export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -397,7 +397,7 @@
 
 ## 2025.1.0
 
-### Patch Changes
+### Patch Changes (2025.1.0)
 
 - Bump vite, Remix versions and tailwind v4 alpha to beta ([#2696](https://github.com/Shopify/hydrogen/pull/2696)) by [@wizardlyhel](https://github.com/wizardlyhel)
 
@@ -484,19 +484,19 @@
 
 ## 2024.10.4
 
-### Patch Changes
+### Patch Changes (2024.10.4)
 
 - Bump cli version ([#2694](https://github.com/Shopify/hydrogen/pull/2694)) by [@wizardlyhel](https://github.com/wizardlyhel)
 
 ## 2024.10.3
 
-### Patch Changes
+### Patch Changes (2024.10.3)
 
 - Prevent scroll reset on variant change ([#2672](https://github.com/Shopify/hydrogen/pull/2672)) by [@scottdixon](https://github.com/scottdixon)
 
 ## 2024.10.2
 
-### Patch Changes
+### Patch Changes (2024.10.2)
 
 - Remove initial redirect from product display page ([#2643](https://github.com/Shopify/hydrogen/pull/2643)) by [@scottdixon](https://github.com/scottdixon)
 
@@ -553,7 +553,7 @@
   ` as const;
   ```
 
-  2. Update `loadDeferredData` function. We no longer need to load in all the variants. You can also remove `VARIANTS_QUERY` variable.
+  1. Update `loadDeferredData` function. We no longer need to load in all the variants. You can also remove `VARIANTS_QUERY` variable.
 
   ```diff
   function loadDeferredData({context, params}: LoaderFunctionArgs) {
@@ -581,7 +581,7 @@
   }
   ```
 
-  3. Remove the redirect logic in the `loadCriticalData` function and completely remove `redirectToFirstVariant` function
+  1. Remove the redirect logic in the `loadCriticalData` function and completely remove `redirectToFirstVariant` function
 
   ```diff
   async function loadCriticalData({
@@ -641,7 +641,7 @@
   -  }
   ```
 
-  4. Update the `Product` component to use the new data fields.
+  1. Update the `Product` component to use the new data fields.
 
   ```diff
   import {
@@ -666,7 +666,7 @@
   -  );
   ```
 
-  5. Handle missing search query param in url from selecting a first variant
+  1. Handle missing search query param in url from selecting a first variant
 
   ```diff
   import {
@@ -691,7 +691,7 @@
   +  useSelectedOptionInUrlParam(selectedVariant.selectedOptions);
   ```
 
-  6. Get the product options array using `getProductOptions`
+  1. Get the product options array using `getProductOptions`
 
   ```diff
   import {
@@ -723,7 +723,7 @@
   +  });
   ```
 
-  7. Remove the `Await` and `Suspense` from the `ProductForm`. We no longer have any queries that we need to wait for.
+  1. Remove the `Await` and `Suspense` from the `ProductForm`. We no longer have any queries that we need to wait for.
 
   ```diff
   export default function Product() {
@@ -760,7 +760,7 @@
   -        </Suspense>
   ```
 
-  8. Update the `ProductForm` component.
+  1. Update the `ProductForm` component.
 
   ```tsx
   import { Link, useNavigate } from "@remix-run/react";
@@ -909,7 +909,7 @@
   }
   ```
 
-  9. Update `app.css`
+  1. Update `app.css`
 
   ```diff
   +  /*
@@ -944,7 +944,7 @@
   +  }
   ```
 
-  10. Update `lib/variants.ts`
+  1. Update `lib/variants.ts`
 
   Make `useVariantUrl` and `getVariantUrl` flexible to supplying a selected option param
 
@@ -989,7 +989,7 @@
     });
   ```
 
-  11. Update `routes/collections.$handle.tsx`
+  1. Update `routes/collections.$handle.tsx`
 
   We no longer need to query for the variants since product route can efficiently
   obtain the first available variants. Update the code to reflect that:
@@ -1047,7 +1047,7 @@
     return (
   ```
 
-  12. Update `routes/collections.all.tsx`
+  1. Update `routes/collections.all.tsx`
 
   Same reasoning as `collections.$handle.tsx`
 
@@ -1104,7 +1104,7 @@
     return (
   ```
 
-  13. Update `routes/search.tsx`
+  1. Update `routes/search.tsx`
 
   Instead of using the first variant, use `selectedOrFirstAvailableVariant`
 
@@ -1185,7 +1185,7 @@
     }
   ```
 
-  14. Update `components/SearchResults.tsx`
+  1. Update `components/SearchResults.tsx`
 
   ```diff
   function SearchResultsProducts({
@@ -1238,7 +1238,7 @@
             });
   ```
 
-  15. Update `components/SearchResultsPredictive.tsx`
+  1. Update `components/SearchResultsPredictive.tsx`
 
   ```diff
   function SearchResultsPredictiveProducts({
@@ -1304,13 +1304,13 @@
 
 ## 2024.10.1
 
-### Patch Changes
+### Patch Changes (2024.10.1)
 
 - Bump to get new cli package version by [@wizardlyhel](https://github.com/wizardlyhel)
 
 ## 2024.10.0
 
-### Patch Changes
+### Patch Changes (2024.10.0)
 
 - Stabilize `getSitemap`, `getSitemapIndex` and implement on skeleton ([#2589](https://github.com/Shopify/hydrogen/pull/2589)) by [@juanpprieto](https://github.com/juanpprieto)
 
@@ -1321,7 +1321,7 @@
   + import {getSitemapIndex} from '@shopify/hydrogen';
   ```
 
-  2. Update the `getSitemap` at `/app/routes/sitemap.$type.$page[.xml].tsx`
+  1. Update the `getSitemap` at `/app/routes/sitemap.$type.$page[.xml].tsx`
 
   ```diff
   - import {unstable__getSitemap as getSitemap} from '@shopify/hydrogen';
@@ -1440,7 +1440,7 @@
         }
   ```
 
-  2. Update your `<VariantSelector>` to use the new `optionValues` field.
+  1. Update your `<VariantSelector>` to use the new `optionValues` field.
 
   ```diff
     <VariantSelector
@@ -1457,7 +1457,7 @@
 
 ## 2024.7.10
 
-### Patch Changes
+### Patch Changes (2024.7.10)
 
 - Use HTML datalist element for query suggestions for autocomplete experience ([#2506](https://github.com/Shopify/hydrogen/pull/2506)) by [@frontsideair](https://github.com/frontsideair)
 
@@ -1468,7 +1468,7 @@
 
 ## 2024.7.9
 
-### Patch Changes
+### Patch Changes (2024.7.9)
 
 - Updated dependencies [[`f3363030`](https://github.com/Shopify/hydrogen/commit/f3363030a50bd24d946427e01b88ba77253a6cc9), [`bb5b0979`](https://github.com/Shopify/hydrogen/commit/bb5b0979ddffb007111885b3a9b7aa490a3c6882)]:
   - @shopify/hydrogen@2024.7.8
@@ -1476,21 +1476,21 @@
 
 ## 2024.7.8
 
-### Patch Changes
+### Patch Changes (2024.7.8)
 
 - Updated dependencies [[`39f8f8fd`](https://github.com/Shopify/hydrogen/commit/39f8f8fd42766d02c6e98f8090608e641db9f002)]:
   - @shopify/hydrogen@2024.7.7
 
 ## 2024.7.7
 
-### Patch Changes
+### Patch Changes (2024.7.7)
 
 - Updated dependencies [[`d0ff37a9`](https://github.com/Shopify/hydrogen/commit/d0ff37a995bb64598930f8aa53f2612f3b1ea476)]:
   - @shopify/hydrogen@2024.7.6
 
 ## 2024.7.6
 
-### Patch Changes
+### Patch Changes (2024.7.6)
 
 - Update Shopify CLI and cli-kit dependencies to 3.66.1 ([#2512](https://github.com/Shopify/hydrogen/pull/2512)) by [@frandiox](https://github.com/frandiox)
 
@@ -1574,14 +1574,14 @@
 
 ## 2024.7.5
 
-### Patch Changes
+### Patch Changes (2024.7.5)
 
 - Updated dependencies [[`b0d3bc06`](https://github.com/Shopify/hydrogen/commit/b0d3bc0696d266fcfc4eb93d0a4adb9ccb56ade6)]:
   - @shopify/hydrogen@2024.7.4
 
 ## 2024.7.4
 
-### Patch Changes
+### Patch Changes (2024.7.4)
 
 - Search & Predictive Search improvements ([#2363](https://github.com/Shopify/hydrogen/pull/2363)) by [@juanpprieto](https://github.com/juanpprieto)
 
@@ -1618,7 +1618,7 @@
 
   ```
 
-  2. Use `createAppLoadContext` method in server.ts Ensure to overwrite any options that is not using the default values in `createHydrogenContext`.
+  1. Use `createAppLoadContext` method in server.ts Ensure to overwrite any options that is not using the default values in `createHydrogenContext`.
 
   ```diff
   // in server.ts
@@ -1675,7 +1675,7 @@
     }
   ```
 
-  3. Use infer type for AppLoadContext in env.d.ts
+  1. Use infer type for AppLoadContext in env.d.ts
 
   ```diff
   // in env.d.ts
@@ -1739,14 +1739,14 @@
 
 ## 2024.7.3
 
-### Patch Changes
+### Patch Changes (2024.7.3)
 
 - Updated dependencies [[`150854ed`](https://github.com/Shopify/hydrogen/commit/150854ed1352245eef180cc6b2bceb41dd8cc898)]:
   - @shopify/hydrogen@2024.7.2
 
 ## 2024.7.2
 
-### Patch Changes
+### Patch Changes (2024.7.2)
 
 - Changed the GraphQL config file format to be TS/JS instead of YAML. ([#2311](https://github.com/Shopify/hydrogen/pull/2311)) by [@frandiox](https://github.com/frandiox)
 
@@ -1755,7 +1755,7 @@
 
 ## 2024.7.1
 
-### Patch Changes
+### Patch Changes (2024.7.1)
 
 - Update `@shopify/oxygen-workers-types` to fix issues on Windows. ([#2252](https://github.com/Shopify/hydrogen/pull/2252)) by [@michenly](https://github.com/michenly)
 
@@ -1921,7 +1921,7 @@
 
 ## 2024.4.5
 
-### Patch Changes
+### Patch Changes (2024.4.5)
 
 - Update remix to v2.9.2 ([#2135](https://github.com/Shopify/hydrogen/pull/2135)) by [@michenly](https://github.com/michenly)
 
@@ -1935,7 +1935,7 @@
 
 ## 2024.4.4
 
-### Patch Changes
+### Patch Changes (2024.4.4)
 
 - Add JSdoc to `getSelectedProductOptions` utility and cleanup the skeleton implementation ([#2089](https://github.com/Shopify/hydrogen/pull/2089)) by [@juanpprieto](https://github.com/juanpprieto)
 
@@ -1945,7 +1945,7 @@
 
 ## 1.0.10
 
-### Patch Changes
+### Patch Changes (1.0.10)
 
 - Update `@shopify/cli` dependency to avoid React version mismatches in your project: ([#2059](https://github.com/Shopify/hydrogen/pull/2059)) by [@frandiox](https://github.com/frandiox)
 
@@ -1963,7 +1963,7 @@
 
 ## 1.0.9
 
-### Patch Changes
+### Patch Changes (1.0.9)
 
 - Pin React dependency to 18.2.0 to avoid mismatches. ([#2051](https://github.com/Shopify/hydrogen/pull/2051)) by [@frandiox](https://github.com/frandiox)
 
@@ -1972,7 +1972,7 @@
 
 ## 1.0.8
 
-### Patch Changes
+### Patch Changes (1.0.8)
 
 - Stop inlining the favicon in base64 to avoid issues with the Content-Security-Policy. In `vite.config.js`: ([#2006](https://github.com/Shopify/hydrogen/pull/2006)) by [@frandiox](https://github.com/frandiox)
 
@@ -2012,7 +2012,7 @@
 
 ## 1.0.7
 
-### Patch Changes
+### Patch Changes (1.0.7)
 
 - Update internal libraries for parsing `.env` files. ([#1946](https://github.com/Shopify/hydrogen/pull/1946)) by [@aswamy](https://github.com/aswamy)
 
@@ -2101,7 +2101,7 @@
 
 ## 1.0.6
 
-### Patch Changes
+### Patch Changes (1.0.6)
 
 - Improve performance of predictive search: ([#1823](https://github.com/Shopify/hydrogen/pull/1823)) by [@frandiox](https://github.com/frandiox)
 
@@ -2116,7 +2116,7 @@
 
 ## 1.0.5
 
-### Patch Changes
+### Patch Changes (1.0.5)
 
 - Update the `@shopify/cli` dependency: ([#1786](https://github.com/Shopify/hydrogen/pull/1786)) by [@frandiox](https://github.com/frandiox)
 
@@ -2150,7 +2150,7 @@
 
 ## 1.0.4
 
-### Patch Changes
+### Patch Changes (1.0.4)
 
 - This is an important fix to a bug with 404 routes and path-based i18n projects where some unknown routes would not properly render a 404. This fixes all new projects, but to fix existing projects, add a `($locale).tsx` route with the following contents: ([#1732](https://github.com/Shopify/hydrogen/pull/1732)) by [@blittle](https://github.com/blittle)
 
@@ -2185,7 +2185,7 @@
 
 ## 1.0.3
 
-### Patch Changes
+### Patch Changes (1.0.3)
 
 - ♻️ `CustomerClient` type is deprecated and replaced by `CustomerAccount` ([#1692](https://github.com/Shopify/hydrogen/pull/1692)) by [@michenly](https://github.com/michenly)
 
@@ -2195,7 +2195,7 @@
 
 ## 1.0.2
 
-### Patch Changes
+### Patch Changes (1.0.2)
 
 - Use new parameters introduced in Storefront API v2024-01 to fix redirection to the product's default variant when there are unknown query params in the URL. ([#1642](https://github.com/Shopify/hydrogen/pull/1642)) by [@wizardlyhel](https://github.com/wizardlyhel)
 
@@ -2251,7 +2251,7 @@
 
 ## 1.0.1
 
-### Patch Changes
+### Patch Changes (1.0.1)
 
 - Sync up environment variable names across all example & type files. ([#1542](https://github.com/Shopify/hydrogen/pull/1542)) by [@michenly](https://github.com/michenly)
 
@@ -2321,7 +2321,7 @@
 
 ## 1.0.0
 
-### Major Changes
+### Major Changes (1.0.0)
 
 - The Storefront API 2023-10 now returns menu item URLs that include the `primaryDomainUrl`, instead of defaulting to the Shopify store ID URL (example.myshopify.com). The skeleton template requires changes to check for the `primaryDomainUrl`: by [@blittle](https://github.com/blittle)
 
@@ -2358,7 +2358,7 @@
   }
   ```
 
-  2. Update the `FooterMenu` component to accept a `primaryDomainUrl` prop and include
+  1. Update the `FooterMenu` component to accept a `primaryDomainUrl` prop and include
      it in the internal url check
 
   ```diff
@@ -2390,7 +2390,7 @@
   }
   ```
 
-  3. Update the `Footer` component to accept a `shop` prop
+  1. Update the `Footer` component to accept a `shop` prop
 
   ```diff
   export function Footer({
@@ -2406,7 +2406,7 @@
   }
   ```
 
-  4. Update `Layout.tsx` to pass the `shop` prop
+  1. Update `Layout.tsx` to pass the `shop` prop
 
   ```diff
   export function Layout({
@@ -2434,7 +2434,7 @@
   }
   ```
 
-### Patch Changes
+### Patch Changes (1.0.0)
 
 - If you are calling `useMatches()` in different places of your app to access the data returned by the root loader, you may want to update it to the following pattern to enhance types: ([#1289](https://github.com/Shopify/hydrogen/pull/1289)) by [@frandiox](https://github.com/frandiox)
 

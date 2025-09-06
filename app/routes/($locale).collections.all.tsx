@@ -25,7 +25,7 @@ export async function loader(args: LoaderFunctionArgs) {
 async function loadCriticalData({context, request}: LoaderFunctionArgs) {
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 10,
   });
 
   const [{products}] = await Promise.all([
@@ -60,7 +60,7 @@ export default function Collection() {
           <ProductItem
             key={product.id}
             product={product}
-            loading={index < 8 ? 'eager' : undefined}
+            loading={index < 10 ? 'eager' : undefined}
           />
         )}
       </PaginatedResourceSection>
@@ -77,6 +77,7 @@ const COLLECTION_ITEM_FRAGMENT = `#graphql
     id
     handle
     title
+    vendor
     featuredImage {
       id
       altText

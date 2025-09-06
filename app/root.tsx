@@ -132,7 +132,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
     })
     .catch((error) => {
       // Log query errors, but don't throw them so the page can still render
-      console.error(error);
+      console.error('Footer menu query error:', error);
       return null;
     });
   return {

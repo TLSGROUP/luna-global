@@ -300,6 +300,7 @@ const PREDICTIVE_SEARCH_PRODUCT_FRAGMENT = `#graphql
     id
     title
     handle
+    vendor
     trackingParameters
     selectedOrFirstAvailableVariant(
       selectedOptions: []
