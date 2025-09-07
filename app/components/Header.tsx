@@ -49,7 +49,7 @@ export function Header({
             <NavLink 
               prefetch="intent" 
               to="/" 
-              className="logo-link text-3xl md:text-4xl font-bold text-purple-600 hover:text-purple-700 transition-colors duration-200 tracking-tight"
+              className="logo-link text-3xl md:text-4xl font-bold text-purple-600 hover:text-purple-700 transition-colors duration-200 tracking-tight drop-shadow-lg hover:drop-shadow-xl"
               style={{textDecoration: 'none'}}
               end
             >
@@ -62,7 +62,7 @@ export function Header({
             <NavLink 
               prefetch="intent" 
               to="/account" 
-              className="hidden md:block text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
+              className="hidden md:block text-lg font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
             >
               <Suspense fallback="Sign in">
                 <Await resolve={isLoggedIn} errorElement="Sign in">
@@ -153,7 +153,7 @@ export function HeaderMenu({
             : item.url;
         return (
           <NavLink
-            className="text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
+            className="text-lg font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
             end
             key={item.id}
             prefetch="intent"
@@ -235,7 +235,7 @@ function CartBadge({count}: {count: number | null}) {
           {count > 99 ? '99+' : count}
         </span>
       )}
-      <span className="hidden sm:inline-block ml-2 text-sm font-medium text-gray-700">
+      <span className="hidden sm:inline-block ml-2 text-lg font-medium text-gray-700">
         Cart {count === null ? '' : `(${count})`}
       </span>
     </button>

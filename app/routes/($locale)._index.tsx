@@ -1,19 +1,30 @@
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link, type MetaFunction} from 'react-router';
-import {Suspense} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
-import type {
-  FeaturedCollectionFragment,
-  RecommendedProductsQuery,
-} from 'storefrontapi.generated';
+import {useLoaderData, type MetaFunction} from 'react-router';
+import {getPaginationVariables} from '@shopify/hydrogen';
+import type {CollectionItemFragment} from 'storefrontapi.generated';
 import {ProductItem} from '~/components/ProductItem';
 import {Hero} from '~/components/Hero';
+import {PaginatedResourceSection} from '~/components/PaginatedResourceSection';
 
-export const meta: MetaFunction = () => {
-  return [{title: 'Hydrogen | Home'}];
+type AllProductsQuery = {
+  products: {
+    nodes: CollectionItemFragment[];
+    pageInfo: {
+      hasPreviousPage: boolean;
+      hasNextPage: boolean;
+      startCursor: string | null;
+      endCursor: string | null;
+    };
+  };
 };
 
-export async function loader(args: LoaderFunctionArgs) {
+export const meta: MetaFunction = () => {
+  return [{title: 'LunaDesire | Home'}];
+};
+
+export async function loader(args: LoaderFunctionArgs): Promise<{
+  products: AllProductsQuery['products'];
+}> {
   // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
 
@@ -27,15 +38,21 @@ export async function loader(args: LoaderFunctionArgs) {
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
-async function loadCriticalData({context}: LoaderFunctionArgs) {
-  const [{collections}] = await Promise.all([
-    context.storefront.query(FEATURED_COLLECTION_QUERY),
+async function loadCriticalData({context, request}: LoaderFunctionArgs): Promise<{
+  products: AllProductsQuery['products'];
+}> {
+  const {storefront} = context;
+  const paginationVariables = getPaginationVariables(request, {
+    pageBy: 15,
+  });
+
+  const [{products}] = await Promise.all([
+    storefront.query(ALL_PRODUCTS_QUERY, {
+      variables: {...paginationVariables},
+    }),
     // Add other queries here, so that they are loaded in parallel
   ]);
-
-  return {
-    featuredCollection: collections.nodes[0],
-  };
+  return {products};
 }
 
 /**
@@ -44,17 +61,7 @@ async function loadCriticalData({context}: LoaderFunctionArgs) {
  * Make sure to not throw any errors here, as it will cause the page to 500.
  */
 function loadDeferredData({context}: LoaderFunctionArgs) {
-  const recommendedProducts = context.storefront
-    .query(RECOMMENDED_PRODUCTS_QUERY)
-    .catch((error) => {
-      // Log query errors, but don't throw them so the page can still render
-      console.error(error);
-      return null;
-    });
-
-  return {
-    recommendedProducts,
-  };
+  return {};
 }
 
 export default function Homepage() {
@@ -65,110 +72,79 @@ export default function Homepage() {
         <Hero />
       </div>
       <div className="px-4 sm:px-6 lg:px-8 py-8">
-        <FeaturedCollection collection={data.featuredCollection} />
-        <RecommendedProducts products={data.recommendedProducts} />
+        <div className="mb-8">
+          <h2 className="text-4xl font-bold text-gray-900 text-center mb-2"
+          style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
+          >
+          Discover Our <span className="text-purple-400">Products</span>
+          </h2>
+        </div>
+        <PaginatedResourceSection
+          connection={data.products}
+          resourcesClassName="products-grid"
+        >
+          {({node: product, index}) => (
+            <ProductItem
+              key={product.id}
+              product={product as CollectionItemFragment}
+              loading={index < 12 ? 'eager' : undefined}
+            />
+          )}
+        </PaginatedResourceSection>
       </div>
     </div>
   );
 }
 
-function FeaturedCollection({
-  collection,
-}: {
-  collection: FeaturedCollectionFragment;
-}) {
-  if (!collection) return null;
-  const image = collection?.image;
-  return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
-        </div>
-      )}
-      <h1>{collection.title}</h1>
-    </Link>
-  );
-}
 
-function RecommendedProducts({
-  products,
-}: {
-  products: Promise<RecommendedProductsQuery | null>;
-}) {
-  return (
-    <div className="recommended-products">
-      <h2>Recommended Products</h2>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Await resolve={products}>
-          {(response) => (
-            <div className="recommended-products-grid">
-              {response
-                ? response.products.nodes.map((product) => (
-                    <ProductItem key={product.id} product={product} />
-                  ))
-                : null}
-            </div>
-          )}
-        </Await>
-      </Suspense>
-      <br />
-    </div>
-  );
-}
-
-const FEATURED_COLLECTION_QUERY = `#graphql
-  fragment FeaturedCollection on Collection {
+const COLLECTION_ITEM_FRAGMENT = `#graphql
+  fragment MoneyCollectionItem on MoneyV2 {
+    amount
+    currencyCode
+  }
+  fragment CollectionItem on Product {
     id
+    handle
     title
-    image {
+    vendor
+    featuredImage {
       id
-      url
       altText
+      url
       width
       height
     }
-    handle
-  }
-  query FeaturedCollection($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...FeaturedCollection
+    priceRange {
+      minVariantPrice {
+        ...MoneyCollectionItem
+      }
+      maxVariantPrice {
+        ...MoneyCollectionItem
       }
     }
   }
 ` as const;
 
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-  fragment RecommendedProduct on Product {
-    id
-    title
-    handle
-    vendor
-    priceRange {
-      minVariantPrice {
-        amount
-        currencyCode
-      }
-    }
-    featuredImage {
-      id
-      url
-      altText
-      width
-      height
-    }
-  }
-  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT, reverse: true) {
+const ALL_PRODUCTS_QUERY = `#graphql
+  query AllProducts(
+    $country: CountryCode
+    $language: LanguageCode
+    $first: Int
+    $last: Int
+    $startCursor: String
+    $endCursor: String
+  ) @inContext(country: $country, language: $language) {
+    products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
       nodes {
-        ...RecommendedProduct
+        ...CollectionItem
+      }
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
       }
     }
   }
+  ${COLLECTION_ITEM_FRAGMENT}
 ` as const;

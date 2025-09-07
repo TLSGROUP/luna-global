@@ -59,7 +59,7 @@ export function ProductItem({
             {product.title}
           </h3>
           <p className="text-xs text-gray-600">
-            {product.vendor}
+            Manufacturer: {product.vendor}
           </p>
         </div>
 

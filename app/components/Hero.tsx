@@ -1,3 +1,5 @@
+import {NavLink} from 'react-router';
+
 export function Hero() {
   return (
     <div className="relative flex flex-col overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-8 md:p-12 text-white shadow-xl md:flex-row md:items-center md:justify-between min-h-[500px] md:min-h-[600px]">
@@ -27,12 +29,20 @@ export function Hero() {
           High-quality materials, discreet shipping, and exceptional customer service.
         </p>
         <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:gap-4">
-          <button className="rounded-md bg-purple-500 px-6 py-2 font-medium transition-all hover:bg-purple-600">
+          <NavLink 
+            to="/collections/all"
+            className="rounded-md bg-purple-500 px-6 py-2 font-medium transition-all hover:bg-purple-600 text-center no-underline"
+            style={{textDecoration: 'none', color: 'white'}}
+          >
             Shop Now
-          </button>
-          <button className="rounded-md border border-white/30 bg-transparent px-6 py-2 font-medium transition-all hover:bg-white/10">
+          </NavLink>
+          <NavLink 
+            to="/collections/all"
+            className="rounded-md border border-white/30 bg-transparent px-6 py-2 font-medium transition-all hover:bg-white/10 text-center no-underline"
+            style={{textDecoration: 'none', color: 'white'}}
+          >
             View Collection
-          </button>
+          </NavLink>
         </div>
       </div>
 
