@@ -105,34 +105,42 @@ export default function Page() {
   // FAQ data with your 8 questions
   const faqData = [
     {
+      id: 'shipping-discreet',
       question: "Will my package be shipped to me discreetly?",
       answer: "Yes, absolutely. All orders are shipped in plain, unmarked packaging with no indication of the contents. Your privacy and discretion are our top priorities."
     },
     {
+      id: 'shipping-partners',
       question: "Who do you use for shipping?",
       answer: "We use trusted shipping partners including FedEx, UPS, and USPS to ensure reliable and discreet delivery of your orders."
     },
     {
+      id: 'shipping-time',
       question: "How long will it take for my product to arrive?",
       answer: "Standard shipping takes 3-5 business days, while express shipping takes 1-2 business days. We also offer same-day delivery in select areas."
     },
     {
+      id: 'business-hours',
       question: "What hours are you open?",
       answer: "Our customer service is available 24/7 online. For phone support, we're available Monday through Friday from 9 AM to 6 PM EST."
     },
     {
+      id: 'return-policy',
       question: "What is your return policy?",
       answer: "We offer a 30-day return policy for unused products in original packaging. Please contact our customer service team for return instructions."
     },
     {
+      id: 'credit-cards',
       question: "What credit cards are accepted?",
       answer: "We accept all major credit cards including Visa, MasterCard, American Express, and Discover. All transactions are encrypted and secure."
     },
     {
+      id: 'credit-card-storage',
       question: "Do you store credit card information on your servers?",
       answer: "No, we do not store credit card information on our servers. All payment processing is handled by secure, PCI-compliant third-party processors."
     },
     {
+      id: 'phone-orders',
       question: "Do you accept phone orders?",
       answer: "No, we do not accept phone orders. All orders must be placed through our secure online store to ensure proper processing and payment security."
     }
@@ -176,7 +184,7 @@ export default function Page() {
                 <div className="space-y-0">
                   {faqData.map((item, index) => (
                     <FAQItem
-                      key={index}
+                      key={item.id}
                       question={item.question}
                       answer={item.answer}
                       isOpen={openItems.has(index)}
