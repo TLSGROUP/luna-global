@@ -12,8 +12,8 @@ type AllProductsQuery = {
     pageInfo: {
       hasPreviousPage: boolean;
       hasNextPage: boolean;
-      startCursor: string | null;
-      endCursor: string | null;
+      startCursor?: string | null;
+      endCursor?: string | null;
     };
   };
 };
