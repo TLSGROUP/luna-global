@@ -45,7 +45,7 @@ export function ProductItem({
         {showFreeShipmentBadge && (
           <div className="absolute top-3 left-3 z-10">
             <span className="relative inline-block rounded-full bg-gradient-to-r from-purple-500 to-indigo-700 px-3 py-1.5 text-xs font-semibold text-white">
-              Free Shipment
+              Free Shipping
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
                 <span className="relative inline-flex h-3 w-3 rounded-full bg-purple-500"></span>
