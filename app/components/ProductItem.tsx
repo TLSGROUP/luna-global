@@ -22,6 +22,13 @@ export function ProductItem({
   const priceRange = product.priceRange;
   const minPrice = priceRange?.minVariantPrice;
   const maxPrice = 'maxVariantPrice' in priceRange ? priceRange.maxVariantPrice : null;
+  const minPriceAmount = minPrice ? Number.parseFloat(minPrice.amount) : null;
+  const showFreeShipmentBadge =
+    !!minPrice &&
+    minPrice.currencyCode === 'USD' &&
+    typeof minPriceAmount === 'number' &&
+    !Number.isNaN(minPriceAmount) &&
+    minPriceAmount >= 70;
   const hasDiscount = minPrice && maxPrice && minPrice.amount !== maxPrice.amount;
   
   return (
@@ -35,6 +42,17 @@ export function ProductItem({
 
       {/* Image container with background glow effect */}
       <div className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-violet-100 p-4 sm:p-6">
+        {showFreeShipmentBadge && (
+          <div className="absolute top-3 left-3 z-10">
+            <span className="relative inline-block rounded-full bg-gradient-to-r from-purple-500 to-indigo-700 px-3 py-1.5 text-xs font-semibold text-white">
+              Free Shipment
+              <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75"></span>
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-purple-500"></span>
+              </span>
+            </span>
+          </div>
+        )}
         <div className="absolute -bottom-10 left-1/2 h-40 w-40 -translate-x-1/2 transform rounded-full bg-purple-500/20 blur-3xl"></div>
         <div className="transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2">
           {image && (
